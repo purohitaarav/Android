@@ -2,60 +2,44 @@ package com.example.photosapp.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Photo implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
-    private String uriString; // path to the image
-    private ArrayList<Tag> tags;
+    // Store as a String because android.net.Uri is NOT Serializable
+    private String uriString;
+    private List<Tag> tags;
 
-    // Constructor
     public Photo(String uriString) {
         this.uriString = uriString;
         this.tags = new ArrayList<>();
     }
 
-    // Getter
-    public String getUriString() {
-        return uriString;
+    public String getUriString() { return uriString; }
+    public List<Tag> getTags() { return tags; }
+
+    public boolean addTag(String name, String value) {
+        Tag newTag = new Tag(name, value);
+        if (!tags.contains(newTag)) {
+            tags.add(newTag);
+            return true;
+        }
+        return false;
     }
 
-    public ArrayList<Tag> getTags() {
-        return tags;
+    public boolean removeTag(String name, String value) {
+        return tags.remove(new Tag(name, value));
     }
 
-    // Add tag
-    public void addTag(Tag tag) {
-        if (tag == null) return;
-
-        // prevent duplicates
-        for (Tag t : tags) {
-            if (t.equals(tag)) {
-                return;
+    // Helper to get the filename from the URI to use as the caption
+    public String getFileName() {
+        if (uriString != null) {
+            int lastSlash = uriString.lastIndexOf('/');
+            if (lastSlash != -1 && lastSlash < uriString.length() - 1) {
+                return uriString.substring(lastSlash + 1);
             }
         }
-        tags.add(tag);
-    }
-
-    // Remove tag
-    public void removeTag(Tag tag) {
-        tags.remove(tag);
-    }
-
-    // Get tags by type (person/location)
-    public ArrayList<Tag> getTagsByType(String type) {
-        ArrayList<Tag> result = new ArrayList<>();
-        for (Tag tag : tags) {
-            if (tag.getType().equalsIgnoreCase(type)) {
-                result.add(tag);
-            }
-        }
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return uriString;
+        return "Unknown";
     }
 }
