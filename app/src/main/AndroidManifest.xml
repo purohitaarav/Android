@@ -20,6 +20,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AlbumActivity"
+            android:exported="false"
+            android:label="Album Content" />
+        <activity
+            android:name=".PhotoDisplayActivity"
+            android:exported="false"
+            android:label="Photo Viewer" />
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false"
+            android:label="Search Photos" />
     </application>
 
 </manifest>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spinnerType1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteVal1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:completionThreshold="1"
+            android:hint="@string/tag_1_value_hint" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/radioGroupLogic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginVertical="8dp">
+
+        <RadioButton
+            android:id="@+id/radioSingle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/single_tag"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/radioAnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/logic_and"/>
+
+        <RadioButton
+            android:id="@+id/radioOr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/logic_or"/>
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spinnerType2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteVal2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:hint="@string/tag_2_value_hint"
+            android:completionThreshold="1"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnExecuteSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/search_photos"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/search_results"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"/>
+
+    <GridView
+        android:id="@+id/searchResultsGrid"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:numColumns="3"
+        android:horizontalSpacing="8dp"
+        android:verticalSpacing="8dp"
+        android:stretchMode="columnWidth"
+        android:layout_marginTop="8dp"/>
+
+</LinearLayout>

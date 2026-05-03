@@ -1,4 +1,4 @@
-package com.example.photosapp.model;
+package com.example.androidproject.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
